@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product list</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<div>
+    <div>
+        <a th:href="@{/editOrder}">Edit order</a>
+    </div>
+    <div class="container">
+        <ul class="product-list">
+            <li class="product-item" th:each="prod : ${products}">
+                <p class="title" th:text="${prod.name}">Product 1</p>
+                <img class="image" th:src="${prod.image}">
+                <p>
+                    <span class="price" th:text="${prod.price}">134</span>
+                    <span class="currency" th:text="${prod.currency}">UAH</span>
+                </p>
+                <p class="description" th:text="${prod.description}">Some description</p>
+                <a th:href="@{/buyProduct(code=${prod.code})}">Buy</a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

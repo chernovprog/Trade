@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit order</title>
+</head>
+<body>
+<h3>Shopding cart</h3>
+<form th:action="@{/shoppingCartEdit}" method="POST" th:object="${cartForm}">
+    <ul>
+        <li class="cart_line" th:each="cartLine : *{cartLines}">
+            <span th:text="${cartLine.productInfo.name}"></span>
+            <span th:text="${cartLine.productInfo.price}"></span>
+            <span th:text="${cartLine.productInfo.currency}"></span>
+            <span th:text="'Code: ' + ${cartLine.productInfo.code}"></span>
+            <input type="hidden" th:field="*{cartLines[__${cartLineStat.index}__].productInfo.code}">
+            <label>Quantity: <input type="text" th:field="*{cartLines[__${cartLineStat.index}__].quantity}"
+                                    size="1"/></label>
+            <a th:href="@{/removeProduct(code=${cartLine.productInfo.code})}">Delete</a>
+        </li>
+    </ul>
+    <input type="submit" value="Update quantity"/>
+</form>
+<h4>
+    <a th:href="@{/updateOrder}">Update order</a>
+</h4>
+</body>
+</html>

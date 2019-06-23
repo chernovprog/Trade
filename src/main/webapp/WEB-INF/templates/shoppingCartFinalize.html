@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart Finalize</title>
+</head>
+<body>
+
+<div class="container">
+    <h3>Thank you for Order</h3>
+    <h4>Your order number is: [[${session.lastOrderedCart.orderNum}]]</h4>
+</div>
+<div>
+    <p><a th:href="@{/editOrder}">Edit order</a></p>
+    <p><a th:href="@{/productList}">Product list</a></p>
+    <p><a th:href="@{/}">Main page</a></p>
+</div>
+
+</body>
+</html>
